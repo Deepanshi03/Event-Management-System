@@ -1,4 +1,18 @@
 package com.example.EventManagementSystem.repository;
 
-public class EventRepository {
+import com.example.EventManagementSystem.domain.Event;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class EventRepository extends JpaRepository {
+
+    List<Event> findByGenre(Genre genre);
+    List<Event> findByName(String eventName);
+    @Query("select e from Event e, Host h where e.host.id = h.id and h.name = ?1")
+    List<Book> findByHost_name(String hostName);
+    
 }

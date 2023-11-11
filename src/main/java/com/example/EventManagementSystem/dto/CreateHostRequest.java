@@ -1,5 +1,7 @@
 package com.example.EventManagementSystem.dto;
 
+import com.example.EventManagementSystem.domain.Host;
+
 import javax.validation.constraints.NotBlank;
 
 public class CreateHostRequest {
@@ -10,19 +12,10 @@ public class CreateHostRequest {
     @NotBlank
     private String email;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public Host to() {
+        return Host.builder()
+                .name(this.name)
+                .email(this.email)
+                .build();
     }
 }

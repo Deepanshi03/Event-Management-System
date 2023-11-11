@@ -1,38 +1,23 @@
 package com.example.EventManagementSystem.dto;
 
+import com.example.EventManagementSystem.controller.ParticipantController;
+import com.example.EventManagementSystem.domain.Participant;
+
 import javax.validation.constraints.NotBlank;
 
 public class CreateParticipantRequest {
 
     @NotBlank
     private String name;
-
     @NotBlank
     private String email;
-
     private int age;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public Participant to(){
+        return Participant.builder()
+                .name(this.name)
+                .email(this.email)
+                .age(this.age)
+                .build();
     }
 }

@@ -1,86 +1,39 @@
 package com.example.EventManagementSystem.dto;
 
-import lombok.Builder;
+import com.example.EventManagementSystem.domain.Event;
+import com.example.EventManagementSystem.domain.Genre;
+import com.example.EventManagementSystem.domain.Host;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class CreateEventRequest {
 
     @NotBlank
     private String name;
-
-    @NotBlank
-    private String description;
-
     @NotNull
-    private Date startDate;
-
-    @NotNull
-    private Date endDate;
-
+    private Genre genre;
     @NotBlank
-    private String location;
-
+    private String hostName;
     @NotBlank
-    private String genre;
+    private String hostEmail;
 
-    private int hostId;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getHostId() {
-        return hostId;
-    }
-
-    public void setHostId(int hostId) {
-        this.hostId = hostId;
+    public Event to(){
+        return Event.builder()
+                .name(this.name)
+                .genre(this.genre)
+                .host(
+                        Host.builder()
+                                .name(this.hostName)
+                                .email(this.hostEmail)
+                                .build()
+                )
+                .build();
     }
 }

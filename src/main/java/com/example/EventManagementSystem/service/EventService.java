@@ -19,7 +19,7 @@ public class EventService {
     private HostService hostService;
     @Autowired
     private EventRepository eventRepository;
-    public void createBook(Event event){
+    public void createEvent(Event event){
 
         Host eventHost = event.getHost(); // here bookAuthor will not be having id and other auto generated fields
         Host savedHost = hostService.getOrCreateHost(eventHost); // now it will be having all the fields

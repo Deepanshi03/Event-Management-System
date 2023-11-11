@@ -1,11 +1,13 @@
 package com.example.EventManagementSystem.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -34,6 +36,16 @@ public class Event {
     @UpdateTimestamp
     private Date updatedOn;
 
+
+    @JoinColumn
+    @ManyToOne
+    @JsonIgnoreProperties({"eventList"})
     private Host host;
+
+
+    @OneToMany(mappedBy = "event")
+    @JsonIgnoreProperties({"eventList"})
+    private List<Participant> participantList;
+
 
 }

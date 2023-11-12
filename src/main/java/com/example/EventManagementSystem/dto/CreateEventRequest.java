@@ -19,6 +19,9 @@ public class CreateEventRequest {
     private String name;
     @NotNull
     private Genre genre;
+
+    private int duration;
+
     @NotBlank
     private String hostName;
     @NotBlank

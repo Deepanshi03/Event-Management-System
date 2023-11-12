@@ -26,9 +26,9 @@ public class SecuredUser implements UserDetails {
     private String authorities;
     private static final String DELIMITER = "::";
 
-    @OneToOne(mappedBy = "securedUser")   // there will be one to one mapping between SecuredUser and student as one SecuredUser can be one student
+    @OneToOne(mappedBy = "securedUser")   // there will be one to one mapping between SecuredUser and participant as one SecuredUser can be one student
     @JsonIgnoreProperties({"securedUser"})
-    private Participant participant; // user id will be foreign key in Student table
+    private Participant participant; // user id will be foreign key in participant table
 
     @OneToOne(mappedBy = "securedUser")   // there will be one to one mapping between user and admin as one user can be one admin
     @JsonIgnoreProperties({"securedUser"})

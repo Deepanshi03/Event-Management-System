@@ -30,11 +30,14 @@ public class ParticipantController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         SecuredUser securedUser = (SecuredUser) authentication.getPrincipal();
-        boolean isCalledByAdmin = securedUser.getAuthorities().stream().anyMatch(x -> "PARTICIPANT_INFO_BY_ADMIN" == x.getAuthority());
+        boolean isCalledByAdmin = securedUser.getAuthorities().stream().anyMatch(x -> "PARTICIPANT_INFO_BY_ADMIN".equals(x.getAuthority()));
         if (isCalledByAdmin) {
             return participantService.getParticipant(id);
         }
-        throw new RuntimeException("User is not authorised");
+        else{
+            throw new RuntimeException("User is not authorised");
+        }
+
     }
 
 

@@ -20,6 +20,8 @@ public class CreateEventRequest {
     @NotNull
     private Genre genre;
 
+    private Date scheduled_on;
+
     private int duration;
 
     @NotBlank
@@ -31,6 +33,8 @@ public class CreateEventRequest {
         return Event.builder()
                 .name(this.name)
                 .genre(this.genre)
+                .scheduled_on(this.scheduled_on)
+                .duration(this.duration)
                 .host(
                         Host.builder()
                                 .name(this.hostName)

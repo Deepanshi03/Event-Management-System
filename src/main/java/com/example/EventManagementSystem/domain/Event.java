@@ -26,7 +26,6 @@ public class Event {
     @Enumerated(value = EnumType.STRING)
     private Genre genre;
 
-    @CreationTimestamp
     private Date scheduled_on;
 
     private int duration;

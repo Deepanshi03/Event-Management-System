@@ -16,6 +16,11 @@ public class SecuredUserService implements UserDetailsService {
     private SecuredUserRepository securedUserRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    public SecuredUserService(SecuredUserRepository securedUserRepository) {
+        this.securedUserRepository = securedUserRepository;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return securedUserRepository.findByUsername(username);

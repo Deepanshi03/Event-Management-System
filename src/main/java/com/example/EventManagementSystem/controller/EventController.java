@@ -23,11 +23,14 @@ public class EventController {
     public void createEvent(@RequestBody @Valid CreateEventRequest createEventRequest){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         SecuredUser securedUser = (SecuredUser) authentication.getPrincipal();
-        boolean isCalledByAdmin =  securedUser.getAuthorities().stream().anyMatch(x-> "CREATE_EVENT_BY_ADMIN" == x.getAuthority());
+        boolean isCalledByAdmin =  securedUser.getAuthorities().stream().anyMatch(x-> "CREATE_EVENT_BY_ADMIN".equals(x.getAuthority()));
         if(isCalledByAdmin) {
             eventService.createEvent(createEventRequest.to());
         }
-        throw new RuntimeException("User is not authorised");
+        else{
+            throw new RuntimeException("User is not authorised");
+        }
+
     }
 
     // In place of defining multiple get requests, below method will work with all the parameters with which we want to search

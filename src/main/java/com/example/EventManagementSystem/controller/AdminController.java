@@ -1,7 +1,6 @@
 package com.example.EventManagementSystem.controller;
 
 import com.example.EventManagementSystem.domain.Admin;
-import com.example.EventManagementSystem.domain.Participant;
 import com.example.EventManagementSystem.domain.SecuredUser;
 import com.example.EventManagementSystem.dto.CreateAdminRequest;
 import com.example.EventManagementSystem.service.AdminService;

@@ -22,11 +22,13 @@ public class ParticipantService {
     }
 
 
-    public Participant getParticipant(int id){
+    public Participant getParticipant(int id)
+    {
         return participantRepository.findById(id).orElse(null);
     }
 
-    public Participant find(int participantId) {
+    public Participant find(int participantId)
+    {
         return participantRepository.findById(participantId).orElse(null);
     }
 

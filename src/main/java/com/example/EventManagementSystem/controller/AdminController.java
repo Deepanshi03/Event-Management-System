@@ -22,21 +22,6 @@ public class AdminController {
         adminService.createAdmin(createAdminRequest.to());
     }
 
-    @GetMapping("/admin-by-id/{id}")
-    public Admin getAdminById(@PathVariable("id") int id) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        SecuredUser securedUser = (SecuredUser) authentication.getPrincipal();
-        boolean isCalledByAdmin = securedUser.getAuthorities().stream().anyMatch(x -> "ADMIN_INFO_BY_ADMIN".equals(x.getAuthority()));
-        if (isCalledByAdmin) {
-            return adminService.getAdmin(id);
-        }
-        else{
-            throw new RuntimeException("User is not authorised");
-        }
-
-    }
-
     @GetMapping("/admin")
     public Admin findAdmin() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
